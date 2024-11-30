@@ -1,2 +1,2 @@
 # CAMPUS-LOOP
-Live arrival predicion
+Live
