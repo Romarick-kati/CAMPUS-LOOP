@@ -1,0 +1,246 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 170px;
+    margin-left: 70px;
+    
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 60%;
+}
+
+.input-setion {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.input-section input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.input-section .location-icon {
+    margin-left: 10px;
+    cursor: pointer;
+}
+.container {
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.search {
+    background: GR;
+    padding: 10px;
+    border-radius: 25px;
+    margin-bottom: 15px;
+}
+
+.search input {
+    width: 90%;
+    border: none;
+    background: none;
+    padding: 5px;
+}
+
+.hotel-card {
+    height: 150px;
+    margin: 10px 0;
+    border-radius: 10px;
+    object-fit: cover;
+    background-position: center;
+    padding: 15px;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#hotel1 {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('KAT2.jpg');
+                object-fit: cover;
+}
+
+#hotel2 {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+                url('KATI1.jpg');
+                object-fit: cover;
+}
+
+.hotel-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.rating {
+    background: rgba(255,255,255,0.9);
+    color: black;
+    padding: 3px 8px;
+    border-radius: 15px;
+}
+ .card {
+            padding: 15px;
+            display: flex;
+            gap: 15px;
+            margin: 20px;
+            box-shadow: 0 2px 8px #ddd;
+            position: relative;
+        }
+        
+        .property-img {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .price-rating {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            text-align: right;
+        }
+        
+        .price {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stars {
+            color: gold;
+            font-size: 16px;
+        }
+        
+        .rating {
+            display: flex;
+            gap: 5px;
+            justify-content: flex-end;
+        }
+        
+        .nav-icons {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #eee;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: #333;
+        }
+        .container {
+            max-width: 1250px;
+            margin: 50px auto;
+            padding: 0 15px;
+            width: 100%;
+            
+        }
+
+        .search-bar {
+            background: #f0f0f0;
+            padding: 12px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            width: 100%;
+            padding: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-icon {
+            margin-right: 10px;
+            color: #666;
+        }
+
+        .hotel-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap:30px;
+        }
+
+        .hotel-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            background: white;
+        }
+
+        .hotel-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .hotel-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            color: white;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+
+        .hotel-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .hotel-price {
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 600px) {
+            .nav ul {
+                float: none;
+                display: grid;
+                text-align: left;
+            }
+        }
