@@ -1,0 +1,57 @@
+:root {
+    --primary-color: #2c3855;
+    --primary-color-dark: #435681;
+    --text-dark: #333333;
+    --text-light: #f3f4f6;
+    --white: #ffffff;
+    --max-width: 1200px;
+   }
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+
+   .section_container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 5rem 1rem;
+   }
+
+   .section_header {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+   }
+   img {
+    width: 100%;
+    display: flex;
+   }
+   .client{
+    background-color: var(--extra-light);
+   }
+   .client_grid{
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+   }
+   .client_card{
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 1rem;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.1);
+
+   }
+   .client_card img {
+     max-width: 80px;
+     margin: auto;
+     margin-bottom: 1rem;
+     border-radius: 100%;
+   }
+   .client_card p{
+    text-align: center;
+    color: var(--text-dark);
+   }

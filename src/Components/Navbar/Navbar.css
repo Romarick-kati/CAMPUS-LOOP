@@ -1,0 +1,74 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    box-shadow: 0 1px 3px -2px black;
+}
+.nav-logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 30px;
+    font-weight: 600;
+}
+.nav-items{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    font-size: 20px;
+    font-weight: 400;
+    
+}
+.nav-items a {
+    color: #333333;
+    text-decoration: none;
+}
+.nav-items  a:hover {
+    text-decoration: underline; 
+    color: gold;
+}
+.nav-items  a.active {
+    color: gold;
+
+}
+   .nav-login{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+   }
+   .nav-login i {
+    font-size: 25px;
+    font-weight: 300;
+    cursor: pointer;
+   }
+   .nav-login button {
+    width: 150px;
+    height: 55px;
+    outline: none;
+    border: 1px solid gold;
+    border-radius: 75px;
+    color: #515151;
+    font-size: 20px;
+    font-weight: 500;
+    background: white;
+    cursor: pointer;
+   }
+   .nav-login button:active{
+    background: gold;
+   }
+   .nav-bell-count {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -35px;
+    margin-left: -55px;
+    border-radius: 11px;
+    font-size: 15px;
+    background: gold;
+    color: white;
+    gap: 15px;
+   }
+ 
