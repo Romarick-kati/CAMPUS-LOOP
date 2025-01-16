@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Login and Registration</title>
+        <link rel="stylesheet" href="login.css">
+        <script src="https://kit.fontawesome.com/ea9a4ceb39.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-box login">
+                <form action="" method="post">
+                    <h1>Login</h1>
+                    <div class="input-box">
+                        <input type="text" placeholder="Username" id="UserName" required>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" id="PassWord" required>
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="forgot-link">
+                        <a href="#">Forgot Password</a>
+                    </div>
+                    <button type="submit" class="btn" id="SignIp" >Login</button> 
+                    <p>or Login with social platforms</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-google"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </form>
+            </div>
+            <div class="form-box register">
+                <form action="">
+                    <h1>Registration</h1>
+                    <div class="input-box">
+                        <input type="text" placeholder="Username" id="UserName" required>
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" placeholder="Email" id="Email" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Password" id="PassWord" required>
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Confirm Password" id="PassWord" required>
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <button type="submit" class="btn" id="SignUp" >Register</button> 
+                    <p>or register with social platforms</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-google"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </form>
+            </div>
+            <div class="toggle-box">
+                <div class="toggle-panel toggle-left">
+                    <h1>Hello, Welcome!</h1>
+                    <p>Don't have an account?</p>
+                    <button class="btn register-btn">Register</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Welcome Back</h1>
+                    <p>Already have an account?</p>
+                    <button class="btn login-btn">Login</button>
+                </div>
+            </div>
+        </div>
+        <script src="login.js"></script>
+    </body>
+</html>
