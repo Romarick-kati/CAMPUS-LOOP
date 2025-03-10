@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'; // Import axios
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import '../CSS/LoginSignup.css';
-import majestie from '../Components/Assets/majestie.jpg';
-
 const LoginSignup = () => {
     const containerRef = useRef(null); // Create a ref for the container
     const navigate = useNavigate(); // Initialize useNavigate

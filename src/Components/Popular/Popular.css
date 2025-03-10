@@ -36,13 +36,13 @@ img {
     overflow: hidden;
     border-radius: 1rem;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for hover effect */
-    cursor: pointer; /* Change cursor to pointer */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    cursor: pointer; 
 }
 
 .popular_card:hover {
-    transform: translateY(-5px); /* Slight upward movement on hover */
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    transform: translateY(-5px); 
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2); 
 }
 
 .popular_content {
@@ -65,33 +65,154 @@ img {
 .popular_content p {
     color: var(--text-dark);
 }
-.hotelModal {
+
+
+.modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    z-index: 999; 
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.hotelModal {
+    background-color: #fefefe;
     padding: 20px;
-    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
 }
 
 .modal-header {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    align-items: center;
     margin-bottom: 20px;
 }
 
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.room-types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .room-card {
-    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e0e0e0;
+    margin-top: 15px;
     padding: 10px;
-    border-radius: 10px;
-    margin: 10px 0;
-    color: black;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+    width: 48%; 
+}
+
+.room-card:hover {
+    background-color: #e0f7fa; 
+}
+
+.room-price {
+    font-size: 1.2em;
+    color: #008000; 
+}
+
+.room-features {
+    list-style: none;
+    padding: 0;
+}
+
+.room-features li {
+    color: #555;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.large-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 0 10px;
+    color: var(--text-dark);
+}
+
+.arrow:hover {
+    color: var(--primary-color); 
+}
+
+.reserve-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reserve-button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.reservationModal {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+}
+
+.reservationModal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.reservationModal input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.confirm-button {
+    background-color: var(--primary-color); 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; 
+}
+.confirm-button:hover {
+    background-color: gold; 
 }

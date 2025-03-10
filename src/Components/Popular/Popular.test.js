@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom'; // This line is crucial
-import Popular from './Popular'; // Adjust the import path as necessary
+import '@testing-library/jest-dom'; 
+import Popular from './Popular'; 
 
 describe('Popular Component', () => {
     test('renders popular hotels', () => {

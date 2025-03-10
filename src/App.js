@@ -2,6 +2,8 @@
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import 'font-awesome/css/font-awesome.min.css';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
 import Home from './Pages/Home';
 import Reservation from './Pages/Reservation';

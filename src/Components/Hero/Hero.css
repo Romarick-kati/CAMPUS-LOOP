@@ -5,42 +5,83 @@
     --text-light: #f3f4f6;
     --white: #ffffff;
     --max-width: 1200px;
-   }
+}
 
-   * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   }
+}
 
-   .section_container {
+.section_container {
     max-width: var(--max-width);
     margin: auto;
     padding: 5rem 1rem;
-   }
+}
 
-   .section_header {
+.section_header {
     font-size: 2rem;
     font-weight: 600;
     color: var(--text-dark);
     text-align: center;
-   }
-   .header_content {
+}
+
+.header_content {
     max-width: 600px;
     padding: 5rem 2rem;
-   }
-   .header_content h1 {
+    position: absolute;
+    color: var(--white);
+    z-index: 2; /* Ensure content is on top */
+}
+
+.header_content h1 {
     margin-bottom: 1rem;
     font-size: 3.5rem;
     line-height: 4rem;
     font-weight: 600;
     color: var(--white);
-   }
+}
 
-   .header_content p {
+.header_content p {
     color: var(--text-light);
-   }
-   .booking_container {
+}
+
+.header_image_container {
+    position: relative;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.header_image {
+    width: 100%;
+    height: 100%;  /* Ensure height is set */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: visible;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.slick-slide {
+    transition: opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
+.slick-dots {
+    bottom: 10px; /* Positioning of dots */
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+    color: var(--white); /* Dot color */
+}
+
+.slick-dots li.slick-active button:before {
+    color: var(--primary-color); /* Active dot color */
+}
+
+.booking_container {
     position: absolute;
     bottom: -70px;
     left: 50%;
@@ -54,26 +95,27 @@
     border-radius: 2rem;
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
-    box-shadow: 5px 5px 30px rgba(0,0,0,0.1);
-   }
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+}
 
-   .booking_container form {
+.booking_container form {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-   }
-   .form_group {
-    width: 100%;
-   }
+}
 
-   .input_group {
+.form_group {
+    width: 100%;
+}
+
+.input_group {
     position: relative;
     width: 100%;
     margin-bottom: 0.5rem;
-   }
+}
 
-   .booking_container label {
+.booking_container label {
     position: absolute;
     top: 50%;
     left: 0;
@@ -83,9 +125,9 @@
     color: var(--text-dark);
     pointer-events: none;
     transition: 0.3s;
-   }
+}
 
-   .booking_container input {
+.booking_container input {
     width: 100%;
     padding: 10px 0;
     font-size: 1rem;
@@ -94,20 +136,20 @@
     background-color: transparent;
     border-bottom: 1px solid var(--primary-color);
     color: var(--text-dark);
-   }
+}
 
-   .booking_container input:focus ~ label,
-   .booking_container input:valid ~ label {
+.booking_container input:focus ~ label,
+.booking_container input:valid ~ label {
     font-size: 0.8rem;
     top: -10px;
-   }
+}
 
-   .booking_container .form_group p {
+.booking_container .form_group p {
     font-size: 0.8rem;
     color: var(--text-dark);
-   }
+}
 
-   .booking_container .btn {
+.booking_container .btn {
     padding: 1rem;
     outline: none;
     border: none;
@@ -117,13 +159,13 @@
     border-radius: 100px;
     cursor: pointer;
     transition: 0.3s;
-   }
+}
 
-   .booking_container .btn:hover {
+.booking_container .btn:hover {
     background-color: var(--primary-color-dark);
-   }
+}
 
-   @media (max-width: 768px) {
+@media (max-width: 768px) {
     .nav-link {
         display: none;
     }
@@ -141,4 +183,4 @@
         width: calc(100% - 2rem);
         padding: 2rem 1rem;
     }
-   }
+}

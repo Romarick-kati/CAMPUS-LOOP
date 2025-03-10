@@ -19,89 +19,124 @@ import akd1 from '../Assets/akd1.jpg';
 import akd2 from '../Assets/akd2.jpg';
 import akd3 from '../Assets/akd3.jpg';
 
-// Continue with your component code...
 const hotels = [
     {
-        name: "Majestie Hotel",
+        name: "Mount Cameroon Hotel",
         img: majestie,
-        price: "15000FCFA",
-        location: "Razel Street, Buea",
+        description: "Experience the beauty of nature with premium services.",
+        location: "Buea, Cameroon",
+        roomTypes: [
+            {
+                type: "VIP Suite",
+                price: "20000FCFA/night",
+                features: ["Mountain view", "Private balcony", "Jacuzzi", "Butler service"],
+                images: [milla1, milla2, milla3]
+            },
+            {
+                type: "Executive Room",
+                price: "15000FCFA/night",
+                features: ["Ocean view", "King size bed", "Complimentary breakfast"],
+                images: [mount1, mount2, mount3]
+            }
+        ]
+    },
+    {
+        name: "Trip Advisor Hotel",
+        img: tripadvise1,
+        description: "Your trusted source for hotel information.",
+        location: "Buea, Cameroon",
         roomTypes: [
             {
                 type: "Standard Room",
-                price: "10000FCFA",
-                features: ["City view", "Double bed", "Free WiFi"],
-                images: [milla1, milla2, milla3]
-            }
-        ]
-    },
-    {
-        name: "Tripadvise",
-        img: tripadvise1,
-        price: "20000FCFA",
-        location: "Mount Cameroon, Buea",
-        roomTypes: [
+                price: "15000FCFA/night",
+                features: ["Free Wi-Fi", "Air conditioning", "Complimentary breakfast"],
+                images: [travis1, travis2, travis3]
+            },
             {
                 type: "Deluxe Room",
-                price: "15000FCFA",
-                features: ["Mountain view", "King size bed"],
-                images: ["path/to/mount1.jpg", "path/to/mount2.jpg", "path/to/mount3.jpg"]
+                price: "25000FCFA/night",
+                features: ["City view", "Mini bar", "Room service"],
+                images: [akd1, akd2, akd3]
             }
         ]
     },
     {
-        name: "WDC Aparamount",
+        name: "WDC Hotel",
         img: wdc,
-        price: "15000FCFA",
-        location: "Mile 16, Buea",
+        description: "Luxury and comfort meet at WDC.",
+        location: "Buea, Cameroon",
         roomTypes: [
             {
-                type: "Business Room",
-                price: "12000FCFA",
-                features: ["Work desk", "High-speed Internet"],
-                images: ["path/to/travis1.jpg", "path/to/travis2.jpg", "path/to/travis3.jpg"]
+                type: "Presidential Suite",
+                price: "120000FCFA/night",
+                features: ["Panoramic view", "Private gym", "Personal chef"],
+                images: [milla1, milla2, milla3]
+            },
+            {
+                type: "Family Room",
+                price: "40000FCFA/night",
+                features: ["Two queen beds", "Living area", "Kids' play area"],
+                images: [mount1, mount2, mount3]
             }
         ]
     },
     {
         name: "Mountain Hotel",
         img: p2,
-        price: "20000FCFA",
-        location: "Mountain, Buea",
+        description: "A perfect blend of luxury and affordability.",
+        location: "Buea, Cameroon",
         roomTypes: [
             {
-                type: "Deluxe Room",
-                price: "18000FCFA",
-                features: ["Nature view", "Free WiFi"],
-                images: ["path/to/mount1.jpg", "path/to/mount2.jpg", "path/to/mount3.jpg"]
+                type: "Standard Suite",
+                price: "30000FCFA/night",
+                features: ["Free breakfast", "Pool access", "24/7 room service"],
+                images: [travis1, travis2, travis3]
+            },
+            {
+                type: "Luxury Room",
+                price: "50000FCFA/night",
+                features: ["Ocean view", "Private terrace", "Spa services"],
+                images: [akd1, akd2, akd3]
             }
         ]
     },
     {
-        name: "Hall of Amelia",
+        name: "Hall Of Amelia",
         img: soe,
-        price: "15000FCFA",
-        location: "Crystal Junction, Buea",
+        description: "Combining tradition with modern luxury.",
+        location: "Buea, Cameroon",
         roomTypes: [
             {
-                type: "Standard Room",
-                price: "10000FCFA",
-                features: ["City view", "Double bed"],
-                images: ["path/to/milla1.jpg", "path/to/milla2.jpg", "path/to/milla3.jpg"]
+                type: "Classic Room",
+                price: "18000FCFA/night",
+                features: ["Garden view", "High-speed internet", "Flat screen TV"],
+                images: [milla1, milla2, milla3]
+            },
+            {
+                type: "Superior Room",
+                price: "35000FCFA/night",
+                features: ["Balcony", "Minibar", "Complimentary drinks"],
+                images: [mount1, mount2, mount3]
             }
         ]
     },
     {
-        name: "Arkahd Hauz",
+        name: "Akhard Hotel",
         img: pos,
-        price: "15000FCFA",
-        location: "UB Junction, Buea",
+        description: "A serene escape with top-notch amenities.",
+        location: "Buea, Cameroon",
         roomTypes: [
             {
-                type: "Budget Room",
-                price: "8000FCFA",
-                features: ["Basic amenities", "Twin beds"],
-                images: ["path/to/akd1.jpg", "path/to/akd2.jpg", "path/to/akd3.jpg"]
+                type: "Executive Suite",
+                price: "70000FCFA/night",
+                features: ["Luxury bath", "Private lounge", "Complimentary cocktails"],
+                images: [travis1, travis2, travis3]
+            },
+            {
+                type: "Junior Suite",
+                price: "40000FCFA/night",
+                features: ["Sofa bed", "Coffee maker", "City view"],
+                images: [akd1, akd2, akd3]
             }
         ]
     }
@@ -110,15 +145,59 @@ const hotels = [
 const Popular = () => {
     const [selectedHotel, setSelectedHotel] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
+    const [reservationVisible, setReservationVisible] = useState(false);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [formData, setFormData] = useState({ name: '', email: '', checkIn: '', checkOut: '', guests: 1 });
 
     const openModal = (hotelIndex) => {
         setSelectedHotel(hotels[hotelIndex]);
         setModalVisible(true);
+        setCurrentImageIndex(0);
     };
 
     const closeModal = () => {
         setModalVisible(false);
         setSelectedHotel(null);
+        setCurrentImageIndex(0);
+    };
+
+    const nextImage = () => {
+        if (selectedHotel) {
+            setCurrentImageIndex((prevIndex) => 
+                (prevIndex + 1) % selectedHotel.roomTypes[0].images.length
+            );
+        }
+    };
+
+    const prevImage = () => {
+        if (selectedHotel) {
+            setCurrentImageIndex((prevIndex) => 
+                (prevIndex - 1 + selectedHotel.roomTypes[0].images.length) % selectedHotel.roomTypes[0].images.length
+            );
+        }
+    };
+
+    const openReservation = () => {
+        setReservationVisible(true);
+    };
+
+    const closeReservation = () => {
+        setReservationVisible(false);
+        setFormData({ name: '', email: '', checkIn: '', checkOut: '', guests: 1 });
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form Data:", formData); // Debugging log
+        openReservation(); // Open reservation view 
     };
 
     return (
@@ -131,7 +210,6 @@ const Popular = () => {
                         <div className="popular_content">
                             <div className="popular_card_header">
                                 <h4>{hotel.name}</h4>
-                                <h4>{hotel.price}</h4>
                             </div>
                             <p>{hotel.location}</p>
                         </div>
@@ -139,32 +217,99 @@ const Popular = () => {
                 ))}
             </div>
 
-            {modalVisible && (
-                <div className="hotelModal" id="hotelModal">
-                    <div className="modal-header">
-                        <h2>{selectedHotel.name}</h2>
-                        <button onClick={closeModal}>Close</button>
-                    </div>
-                    <div className="hotel-description">
-                        <p>{selectedHotel.roomTypes[0].features.join(', ')}</p>
-                    </div>
-                    <div className="room-types">
-                        {selectedHotel.roomTypes.map((room, idx) => (
-                            <div className="room-card" key={idx}>
-                                <h4>{room.type}</h4>
-                                <div className="room-price">{room.price}</div>
-                                <ul className="room-features">
-                                    {room.features.map((feature, fIdx) => (
-                                        <li key={fIdx}>{feature}</li>
-                                    ))}
-                                </ul>
-                                <div className="room-gallery">
-                                    {room.images.map((image, imgIdx) => (
-                                        <img src={image} alt={room.type} key={imgIdx} />
-                                    ))}
+            {modalVisible && selectedHotel && (
+                <div className="modal-overlay" onClick={closeModal}>
+                    <div className="hotelModal" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-header">
+                            <h2>{selectedHotel.name}</h2>
+                            <button className="close-button" onClick={closeModal}>✖</button>
+                        </div>
+                        <p className="modal-description">{selectedHotel.description}</p>
+                        <p>Location: {selectedHotel.location}</p>
+                        <div className="room-types">
+                            {selectedHotel.roomTypes.map((room, idx) => (
+                                <div className="room-card" key={idx}>
+                                    <h4>{room.type}</h4>
+                                    <div className="room-price">{room.price}</div>
+                                    <ul className="room-features">
+                                        {room.features.map((feature, fIdx) => (
+                                            <li key={fIdx}>✔ {feature}</li>
+                                        ))}
+                                    </ul>
+                                    <div className="image-container">
+                                        <button className="arrow" onClick={prevImage}>❮</button>
+                                        <img
+                                            className="large-image"
+                                            src={room.images[currentImageIndex]}
+                                            alt={`Room view ${currentImageIndex + 1}`}
+                                        />
+                                        <button className="arrow" onClick={nextImage}>❯</button>
+                                    </div>
+                                    <button className="reserve-button" onClick={openReservation}>Reserve Now</button>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {reservationVisible && (
+                <div className="modal-overlay" onClick={closeReservation}>
+                    <div className="reservationModal" onClick={(e) => e.stopPropagation()}>
+                        <button className="close-button" onClick={closeReservation}>✖</button>
+                        <h2>Reservation Form</h2>
+                        <form onSubmit={handleSubmit}>
+                            <input 
+                                type="text" 
+                                name="name" 
+                                placeholder="Your Name" 
+                                value={formData.name} 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="Your Email" 
+                                value={formData.email} 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            <input 
+                                type="date" 
+                                name="checkIn" 
+                                value={formData.checkIn} 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            <input 
+                                type="date" 
+                                name="checkOut" 
+                                value={formData.checkOut} 
+                                onChange={handleChange} 
+                                required 
+                            />
+                            <input 
+                                type="number" 
+                                name="guests" 
+                                placeholder="Number of Guests" 
+                                value={formData.guests} 
+                                onChange={handleChange} 
+                                min="1" 
+                                required 
+                            />
+                            <button type="submit" className="confirm-button">Confirm Reservation</button>
+                        </form>
+                        {formData.name && (
+                            <div className="reservation-details">
+                                <h2>Reservation Confirmation</h2>
+                                <p>Name: {formData.name}</p>
+                                <p>Email: {formData.email}</p>
+                                <p>Check-in Date: {formData.checkIn}</p>
+                                <p>Check-out Date: {formData.checkOut}</p>
+                                <p>Number of Guests: {formData.guests}</p>
                             </div>
-                        ))}
+                        )}
                     </div>
                 </div>
             )}

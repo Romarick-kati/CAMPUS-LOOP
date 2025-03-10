@@ -1,0 +1,26 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [sam]  # Adjust to your default branch if necessary
+  pull_request:
+    branches: [sam]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Specify the Node.js version you want to use
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
