@@ -1,1 +1,75 @@
-const express = require('express');const mysql = require('mysql');const bodyParser = require('body-parser');const cors = require('cors');const bcrypt = require('bcrypt'); // Import bcrypt for password hashingconst jwt = require('jsonwebtoken'); // Import JWT for token generationconst app = express();const port = 3000;// Middlewareapp.use(cors({    origin: 'http://localhost:3001', // Replace with your frontend URL    methods: ['GET', 'POST', 'PUT', 'DELETE'],    credentials: true // Allow credentials (cookies, authorization headers, etc.)}));app.use(bodyParser.json());// MySQL connectionconst db = mysql.createConnection({    host: 'localhost',    user: 'root', // Replace with your MySQL username    password: 'STAR2024', // Replace with your MySQL password    database: 'elite db'});db.connect((err) => {    if (err) throw err;    console.log('Connected to MySQL Database');});// RESTful API routes// Get all usersapp.get('/api/users', (req, res) => {    db.query('SELECT * FROM users', (err, results) => {        if (err) throw err;        res.json(results);    });});// Get a single user by IDapp.get('/api/users/:id', (req, res) => {    const userId = req.params.id;    db.query('SELECT * FROM users WHERE id = ?', [userId], (err, result) => {        if (err) throw err;        res.json(result[0]);    });});// Create a new user (Signup)app.post('/api/signup', async (req, res) => {    const { username, email, password } = req.body;    // Check if user exists    db.query('SELECT * FROM users WHERE username = ?', [username], async (err, results) => {        if (err) throw err;        if (results.length > 0) {            return res.status(400).json({ message: 'Username already exists' });        }        // Hash the password        const hashedPassword = await bcrypt.hash(password, 10);        // Insert new user into the database        db.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)',             [username, email, hashedPassword], (err, result) => {                if (err) throw err;                const token = jwt.sign({ id: result.insertId }, 'your_jwt_secret', { expiresIn: '1h' }); // Replace 'your_jwt_secret' with a secret key                res.status(201).json({ id: result.insertId, username, email, token });            });    });});// Login a userapp.post('/api/login', (req, res) => {    const { username, password } = req.body;    // Check if user exists    db.query('SELECT * FROM users WHERE username = ?', [username], (err, results) => {        if (err) throw err;        if (results.length === 0) {            return res.status(401).json({ message: 'Invalid username or password' });        }        const user = results[0];        // Compare the password with the hashed password in the database        bcrypt.compare(password, user.password, (err, isMatch) => {            if (err) throw err;            if (!isMatch) {                return res.status(401).json({ message: 'Invalid username or password' });            }            // Generate a token            const token = jwt.sign({ id: user.id }, 'your_jwt_secret', { expiresIn: '1h' }); // Replace 'your_jwt_secret' with a secret key            res.json({ message: 'Login successful', token });        });    });});// Update a userapp.put('/api/users/:id', (req, res) => {    const userId = req.params.id;    const updatedUser = req.body;    db.query('UPDATE users SET ? WHERE id = ?', [updatedUser, userId], (err, result) => {        if (err) throw err;        res.json({ id: userId, ...updatedUser });    });});// Delete a userapp.delete('/api/users/:id', (req, res) => {    const userId = req.params.id;    db.query('DELETE FROM users WHERE id = ?', [userId], (err, result) => {        if (err) throw err;        res.json({ message: 'User deleted' });    });});// Start the serverapp.listen(port, () => {    console.log(`Server is running on http://localhost:${port}`);});
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql2');
+
+const app = express();
+const port = 3000;
+
+// Middleware
+app.use(bodyParser.json());
+
+// MySQL Connection
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'Ndip_Samuel',    
+    password: 'STAR2024', 
+    database: 'mydatabase'
+});
+
+// Connect to the MySQL database
+db.connect(err => {
+    if (err) {
+        console.error('Database connection failed:', err.stack);
+        return;
+    }
+    console.log('Connected to the database.');
+});
+
+// Get all users
+app.get('/users', (req, res) => {
+    db.query('SELECT * FROM users', (err, results) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        res.json(results);
+    });
+});
+
+// Create a new user
+app.post('/users', (req, res) => {
+    const { name, email } = req.body;
+    db.query('INSERT INTO users (name, email) VALUES (?, ?)', [name, email], (err, results) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        res.status(201).json({ id: results.insertId, name, email });
+    });
+});
+
+// Update a user
+app.put('/users/:id', (req, res) => {
+    const { id } = req.params;
+    const { name, email } = req.body;
+    db.query('UPDATE users SET name = ?, email = ? WHERE id = ?', [name, email, id], (err, results) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        res.json({ id, name, email });
+    });
+});
+
+// Delete a user
+app.delete('/users/:id', (req, res) => {
+    const { id } = req.params;
+    db.query('DELETE FROM users WHERE id = ?', [id], (err, results) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        res.status(204).send();
+    });
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});
